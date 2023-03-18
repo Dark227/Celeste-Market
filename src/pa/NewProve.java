@@ -22,6 +22,7 @@ public class NewProve extends javax.swing.JFrame
     public NewProve()
     {
         initComponents();
+        setIconImage(to.icono());
         mosDa();
     }
 

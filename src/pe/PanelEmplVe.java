@@ -43,7 +43,7 @@ public class PanelEmplVe extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
         lbuser = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jlTotal = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -80,11 +80,11 @@ public class PanelEmplVe extends javax.swing.JFrame
         jLabel2.setOpaque(true);
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 7, 150, 36));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("$ 0.0");
-        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 7, 150, 36));
+        jlTotal.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        jlTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlTotal.setText("$ 0.0");
+        jlTotal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jlTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 7, 150, 36));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 50));
 
@@ -156,7 +156,7 @@ public class PanelEmplVe extends javax.swing.JFrame
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        tbAdmin.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
+        tbAdmin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         tbAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
@@ -215,6 +215,7 @@ public class PanelEmplVe extends javax.swing.JFrame
     public void inicia()
     {
         setIconImage(to.icono());
+        lbuser.setText(LogEmple.getUsuario().toUpperCase());
         mosDa();
     }
     public void mosDa()
@@ -226,6 +227,9 @@ public class PanelEmplVe extends javax.swing.JFrame
         mode.addColumn("Precio");
         tbAdmin.setModel(mode);
         to.colorTable(tbAdmin, 4);
+        Consultas cl= new Consultas();
+        Empleado dat= cl.dataEmpleado(LogEmple.getUsuario());
+        cl.consuProdvent(mode, dat.getRfc(),jlTotal);
     }
     /**
      * @param args the command line arguments
@@ -282,7 +286,6 @@ public class PanelEmplVe extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -292,6 +295,7 @@ public class PanelEmplVe extends javax.swing.JFrame
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jlTotal;
     private javax.swing.JLabel lbuser;
     private javax.swing.JTable tbAdmin;
     // End of variables declaration//GEN-END:variables

@@ -51,15 +51,15 @@ public class PanelAdminVe extends javax.swing.JFrame
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lbDia = new javax.swing.JLabel();
+        lbSemana = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbMes = new javax.swing.JComboBox<>();
+        cbAnio = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        lbMes = new javax.swing.JLabel();
+        lbAnio = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Panel de administrador");
@@ -197,43 +197,43 @@ public class PanelAdminVe extends javax.swing.JFrame
         jLabel3.setOpaque(true);
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 230, 40));
 
-        jLabel10.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("$ 0.0");
-        jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, 230, 40));
+        lbDia.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        lbDia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbDia.setText("$ 0.0");
+        lbDia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(lbDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, 230, 40));
 
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("$ 0.0");
-        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 230, 40));
+        lbSemana.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        lbSemana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbSemana.setText("$ 0.0");
+        lbSemana.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(lbSemana, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 230, 40));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
         jLabel12.setText("Ganancia");
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 100, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mes", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener()
+        cbMes.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        cbMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mes", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        cbMes.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jComboBox1ActionPerformed(evt);
+                cbMesActionPerformed(evt);
             }
         });
-        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 210, 100, 30));
+        jPanel4.add(cbMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 210, 100, 30));
 
-        jComboBox2.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Año", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener()
+        cbAnio.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        cbAnio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Año", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
+        cbAnio.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jComboBox2ActionPerformed(evt);
+                cbAnioActionPerformed(evt);
             }
         });
-        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 210, 100, 30));
+        jPanel4.add(cbAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 210, 100, 30));
 
         jLabel13.setBackground(new java.awt.Color(0, 118, 255));
         jLabel13.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
@@ -253,17 +253,17 @@ public class PanelAdminVe extends javax.swing.JFrame
         jLabel14.setOpaque(true);
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 230, 40));
 
-        jLabel15.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("$ 0.0");
-        jLabel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 230, 40));
+        lbMes.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        lbMes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMes.setText("$ 0.0");
+        lbMes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(lbMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 230, 40));
 
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("$ 0.0");
-        jLabel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 230, 40));
+        lbAnio.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        lbAnio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbAnio.setText("$ 0.0");
+        lbAnio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(lbAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 230, 40));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 1120, 640));
 
@@ -315,22 +315,74 @@ public class PanelAdminVe extends javax.swing.JFrame
         this.dispose();
     }//GEN-LAST:event_jLabel9MouseClicked
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBox1ActionPerformed
-    {//GEN-HEADEREND:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void cbMesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cbMesActionPerformed
+    {//GEN-HEADEREND:event_cbMesActionPerformed
+        String m,a;
+        m= cbMes.getSelectedItem().toString();
+        a=cbAnio.getSelectedItem().toString();
+        if (!m.equals("Mes"))
+        {
+            if (!a.equals("Año"))
+            {
+                lbMes.setText("$ "+cargaData(3,m,a));
+            }else
+            {
+                cbMes.setSelectedItem("Mes");
+                to.error("Selecciona un año primero", "Error de año");
+            }
+        }else
+        {
+            lbMes.setText("$ 0.0");
+        }
+    }//GEN-LAST:event_cbMesActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBox2ActionPerformed
-    {//GEN-HEADEREND:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    private void cbAnioActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cbAnioActionPerformed
+    {//GEN-HEADEREND:event_cbAnioActionPerformed
+        String se= cbAnio.getSelectedItem().toString();
+        String m;
+        if (!se.equals("Año"))
+        {
+            lbAnio.setText("$ "+cargaData(4,"",se));
+            m=cbMes.getSelectedItem().toString();
+            if (!m.equals("Mes"))
+            {
+                lbMes.setText("$ "+cargaData(3,m,se));
+            }
+        }else
+        {
+            lbAnio.setText("$ 0.0");
+        }
+    }//GEN-LAST:event_cbAnioActionPerformed
 
     public void inicia()
     {
         setIconImage(to.icono());
         lbuser.setText(LogAdmin.getUser().toUpperCase());
+        lbDia.setText("$ "+cargaData(1,"",""));
+        lbSemana.setText("$ "+cargaData(2,"",""));
     }
     
+    private double cargaData(int op,String m,String a)
+    {
+        double t=0;
+        Consultas cl = new Consultas();
+        switch (op)
+        {
+            case 1:
+                t=cl.consuTotalDia();
+                break;
+            case 2:
+                t=cl.consuTotalSemana();
+                break;
+            case 3:
+                t=cl.consuTotalMes(m, a);
+                break;
+            case 4:
+                t=cl.consuTotalAnio(a);
+                break;
+        }
+        return t;
+    }
     /**
      * @param args the command line arguments
      */
@@ -378,16 +430,12 @@ public class PanelAdminVe extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> cbAnio;
+    private javax.swing.JComboBox<String> cbMes;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -400,6 +448,10 @@ public class PanelAdminVe extends javax.swing.JFrame
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel lbAnio;
+    private javax.swing.JLabel lbDia;
+    private javax.swing.JLabel lbMes;
+    private javax.swing.JLabel lbSemana;
     private javax.swing.JLabel lbuser;
     // End of variables declaration//GEN-END:variables
 }

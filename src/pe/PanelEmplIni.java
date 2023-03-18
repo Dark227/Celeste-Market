@@ -5,6 +5,7 @@
  */
 package pe;
 
+import com.toedter.calendar.JCalendar;
 import pa.*;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -19,6 +20,9 @@ public class PanelEmplIni extends javax.swing.JFrame
 {
     
     Tools to = new Tools();
+    double total=0;
+    public static String  fecha="";
+    
     /**
      * Creates new form PanelAdminAd
      */
@@ -57,7 +61,7 @@ public class PanelEmplIni extends javax.swing.JFrame
         tbAdmin = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        jltotal = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,6 +92,13 @@ public class PanelEmplIni extends javax.swing.JFrame
         jLabel2.setText("Agregar");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.setOpaque(true);
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                jLabel2MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 7, 120, 36));
 
         jLabel3.setBackground(new java.awt.Color(84, 194, 66));
@@ -97,6 +108,13 @@ public class PanelEmplIni extends javax.swing.JFrame
         jLabel3.setText("Buscar");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.setOpaque(true);
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                jLabel3MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 7, 120, 36));
 
         txtcat.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
@@ -172,6 +190,13 @@ public class PanelEmplIni extends javax.swing.JFrame
         jLabel10.setText("Fecha");
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel10.setOpaque(true);
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                jLabel10MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 230, 40));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 230, 640));
@@ -181,7 +206,7 @@ public class PanelEmplIni extends javax.swing.JFrame
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        tbAdmin.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
+        tbAdmin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         tbAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
@@ -195,6 +220,7 @@ public class PanelEmplIni extends javax.swing.JFrame
 
             }
         ));
+        tbAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tbAdmin);
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 20, 1030, 440));
@@ -206,6 +232,13 @@ public class PanelEmplIni extends javax.swing.JFrame
         jLabel8.setText("Finalizar venta");
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel8.setOpaque(true);
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                jLabel8MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 590, 230, 40));
 
         jLabel9.setBackground(new java.awt.Color(226, 15, 0));
@@ -215,13 +248,20 @@ public class PanelEmplIni extends javax.swing.JFrame
         jLabel9.setText("Cancelar venta");
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel9.setOpaque(true);
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                jLabel9MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 590, 230, 40));
 
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("$ 0.0");
-        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 600, 150, 40));
+        jltotal.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        jltotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jltotal.setText("$ 0.0");
+        jltotal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(jltotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 600, 150, 40));
 
         jLabel12.setBackground(new java.awt.Color(0, 118, 255));
         jLabel12.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
@@ -270,8 +310,70 @@ public class PanelEmplIni extends javax.swing.JFrame
         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel2MouseClicked
+    {//GEN-HEADEREND:event_jLabel2MouseClicked
+        String b,c;
+        b= txtBuscar.getText();
+        c= txtcat.getText();
+        if (b.isEmpty() || c.isEmpty())
+        {
+            to.error("No deje campos vacíos", "Error de campos");
+        } else
+        {
+            Consultas cl = new Consultas();
+            DefaultTableModel mode = (DefaultTableModel) tbAdmin.getModel();
+            String data[] = new String[4];
+            Producto pr=cl.dataPro(b);
+          
+            if (pr!=null)
+            {
+                double pt=pr.getPrecio()*Double.valueOf(c);
+                
+                data[0]=b;
+                data[1]=pr.getNombre();
+                data[2]=c;
+                data[3]=""+pt;
+                mode.addRow(data);
+                total=total+pt;
+                jltotal.setText("$ "+total);
+                txtBuscar.setText("");
+                txtcat.setText("");
+            }
+        }
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel3MouseClicked
+    {//GEN-HEADEREND:event_jLabel3MouseClicked
+        new BuscarProd().setVisible(true);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel8MouseClicked
+    {//GEN-HEADEREND:event_jLabel8MouseClicked
+        //Finalizar venta
+        if (to.pregunta("¿Quieres finalizar la venta?", "Mensaje de confirmación")==0)
+        {
+            finaliza();
+            cancela();
+        }
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel9MouseClicked
+    {//GEN-HEADEREND:event_jLabel9MouseClicked
+
+        if (to.pregunta("¿Seguro que quieres cancelar la venta?", "Mensaje de confirmación")==0)
+        {
+            cancela();
+        }
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel10MouseClicked
+    {//GEN-HEADEREND:event_jLabel10MouseClicked
+        new Fecha().setVisible(true);
+    }//GEN-LAST:event_jLabel10MouseClicked
+
     public void inicia()
     {
+        lbuser.setText(LogEmple.getUsuario().toUpperCase());
         to.txtFondo("Clave de producto", txtBuscar);
         to.txtFondo("Cantidad", txtcat);
         setIconImage(to.icono());
@@ -287,6 +389,43 @@ public class PanelEmplIni extends javax.swing.JFrame
         tbAdmin.setModel(mode);
         to.colorTable(tbAdmin, 4);
     }
+    private void finaliza()
+    {
+        DefaultTableModel model = (DefaultTableModel) tbAdmin.getModel();
+        Altas al = new Altas();
+        Consultas cl = new Consultas();
+        Modifica modif= new Modifica();
+        Empleado elp= cl.dataEmpleado(LogEmple.getUsuario());
+        String rfc =elp.getRfc();
+        al.altaVenta(rfc, total, fecha);
+        jltotal.setText("$ 0.0");
+        String clave;
+        int cantidad;
+        int torow=tbAdmin.getRowCount();
+        for (int i = 0; i < torow; i++)
+        {
+            clave=tbAdmin.getValueAt(i, 0).toString();
+            Producto mpro=cl.dataPro(clave);
+            cantidad =Integer.valueOf(tbAdmin.getValueAt(i, 2).toString());
+            al.altaProdven(rfc, clave,""+cantidad, fecha);
+            modif.quitaPro((mpro.getCantidad()-cantidad), clave);
+        }
+        jltotal.setText("$ 0.0");
+        total=0;
+        to.aviso("Se guardo con exíto", "Mensaje de exíto");
+    }
+    private void cancela()
+    {
+         int torow=tbAdmin.getRowCount();
+         for (int i = 0; i < torow; i++)
+        {
+            DefaultTableModel model = (DefaultTableModel) tbAdmin.getModel();
+            model.removeRow(0);
+        }
+         total=0;
+         jltotal.setText("$ 0.0");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -338,7 +477,6 @@ public class PanelEmplIni extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -353,6 +491,7 @@ public class PanelEmplIni extends javax.swing.JFrame
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jltotal;
     private javax.swing.JLabel lbuser;
     private javax.swing.JTable tbAdmin;
     private javax.swing.JTextField txtBuscar;

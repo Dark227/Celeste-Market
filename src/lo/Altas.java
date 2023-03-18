@@ -169,24 +169,25 @@ public class Altas
         }
     }
     
-    public boolean altaProdven(String rfc, String clave,String fecha)
+    public boolean altaProdven(String rfc, String clave,String cantidad,String fecha)
     {
         String sql;
         if (fecha.isEmpty())
         {
-            sql="INSERT INTO prodven (RFC, CLAVE, FECHA) VALUES (?,?,now())";
+            sql="INSERT INTO prodven (RFC, CLAVE, CANTIDAD, FECHA) VALUES (?,?,?,now())";
         } else
         {
-            sql="INSERT INTO prodven (RFC, CLAVE, FECHA) VALUES (?,?,?)";
+            sql="INSERT INTO prodven (RFC, CLAVE, CANTIDAD, FECHA) VALUES (?,?,?,?)";
         }
         try
         {
             PreparedStatement post = cn.prepareStatement(sql);
             post.setString(1, rfc);
             post.setString(2, clave);
+            post.setString(3, cantidad);
             if (!fecha.isEmpty())
             {
-                post.setString(3, fecha);
+                post.setString(4, fecha);
             }
             
             int n= post.executeUpdate();

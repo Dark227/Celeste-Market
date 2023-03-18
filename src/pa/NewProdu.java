@@ -62,7 +62,7 @@ public class NewProdu extends javax.swing.JFrame
         jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Registro de nuevo administrador");
+        setTitle("Registro de nuevo producto");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -192,11 +192,11 @@ public class NewProdu extends javax.swing.JFrame
             Altas al = new Altas();
             if (al.altaPro(clave, nombre, icanti, dpreci, dcost, cate, idpr))
             {
-                to.aviso("El usuario se registró con éxito", "Mensaje de éxito");
+                to.aviso("El producto se registró con éxito", "Mensaje de éxito");
                 this.dispose();
             } else
             {
-                to.error("No se pudo registrar el usuario", "Error de registró");
+                to.error("No se pudo registrar el producto", "Error de registró");
             }
 
         }

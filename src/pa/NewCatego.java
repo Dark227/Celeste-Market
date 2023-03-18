@@ -22,6 +22,7 @@ public class NewCatego extends javax.swing.JFrame
     public NewCatego()
     {
         initComponents();
+        setIconImage(to.icono());
         mosDa();
     }
 

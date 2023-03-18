@@ -6,6 +6,9 @@
 package pa;
 
 import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import lo.*;
@@ -14,14 +17,15 @@ import lo.*;
  *
  * @author chenc
  */
-public class PanelAdminDat extends javax.swing.JFrame
+public class PanelAdminDat extends javax.swing.JFrame implements WindowListener
 {
-    
+
     Tools to = new Tools();
+
     /**
      * Creates new form PanelAdminAd
      */
-    public PanelAdminDat()
+    public PanelAdminDat() 
     {
         initComponents();
         inicia();
@@ -199,6 +203,13 @@ public class PanelAdminDat extends javax.swing.JFrame
         jLabel10.setText("Modificar datos");
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel10.setOpaque(true);
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                jLabel10MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 480, 230, 40));
 
         jLabel2.setBackground(new java.awt.Color(84, 194, 66));
@@ -208,6 +219,13 @@ public class PanelAdminDat extends javax.swing.JFrame
         jLabel2.setText("Cambiar contraseña");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.setOpaque(true);
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                jLabel2MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, 230, 40));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 1120, 640));
@@ -260,10 +278,37 @@ public class PanelAdminDat extends javax.swing.JFrame
         this.dispose();
     }//GEN-LAST:event_jLabel9MouseClicked
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel2MouseClicked
+    {//GEN-HEADEREND:event_jLabel2MouseClicked
+        new ModifPassAd().setVisible(true);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel10MouseClicked
+    {//GEN-HEADEREND:event_jLabel10MouseClicked
+        //ModifDataAd imd= new ModifDataAd();
+        ModifDataAd nmd = new ModifDataAd();
+        nmd.setVisible(true);
+        nmd.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent e)
+            {
+                //nmd.dispose();
+                notificarVentana1();
+                
+            }
+        });
+    }//GEN-LAST:event_jLabel10MouseClicked
+
     public void inicia()
     {
         setIconImage(to.icono());
         lbuser.setText(LogAdmin.getUser().toUpperCase());
+        mosDa();
+    }
+
+    private void notificarVentana1()
+    {
+        // aquí puedes agregar el código que notifica a la primera ventana
         mosDa();
     }
     public void mosDa()
@@ -275,7 +320,10 @@ public class PanelAdminDat extends javax.swing.JFrame
         mode.addColumn("Teléfono");
         tbAdmin.setModel(mode);
         to.colorTable(tbAdmin, 4);
+        Consultas cl = new Consultas();
+        cl.consuDatosAdmin(mode, LogAdmin.getUser());
     }
+
     /**
      * @param args the command line arguments
      */
@@ -312,6 +360,7 @@ public class PanelAdminDat extends javax.swing.JFrame
         //</editor-fold>
         //</editor-fold>
 
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable()
         {
@@ -340,4 +389,47 @@ public class PanelAdminDat extends javax.swing.JFrame
     private javax.swing.JLabel lbuser;
     private javax.swing.JTable tbAdmin;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void windowOpened(WindowEvent e)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

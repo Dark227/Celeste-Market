@@ -37,6 +37,8 @@ public class PanelAdminAd extends javax.swing.JFrame
     private void initComponents()
     {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -55,6 +57,16 @@ public class PanelAdminAd extends javax.swing.JFrame
         jScrollPane1 = new javax.swing.JScrollPane();
         tbAdmin = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
+
+        jMenuItem1.setText("Eliminar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Panel de administrador");
@@ -225,6 +237,7 @@ public class PanelAdminAd extends javax.swing.JFrame
 
             }
         ));
+        tbAdmin.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(tbAdmin);
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 20, 1030, 440));
@@ -317,6 +330,30 @@ public class PanelAdminAd extends javax.swing.JFrame
         }
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMenuItem1ActionPerformed
+    {//GEN-HEADEREND:event_jMenuItem1ActionPerformed
+        if (tbAdmin.getSelectedRowCount()==0)
+        {
+            to.error("Selecciona una opción", "Error de selección");
+        } else
+        {
+            if (to.pregunta("¿Quieres eliminar este usuario?", "Mensaje de confirmación")==0)
+            {
+                int fil = tbAdmin.getSelectedRow();
+                
+                Eliminar el= new Eliminar();
+                String rfc =tbAdmin.getValueAt(fil, 0).toString();
+                if (el.eliminaAdmin(rfc))
+                {
+                    to.aviso("Se eliminó con exíto", "Mensaje de exíto");
+                    mosDa("");
+                } else
+                {
+                }
+            }
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public void inicia()
     {
         to.txtFondo("Buscar administrador", txtBuscar);
@@ -397,10 +434,12 @@ public class PanelAdminAd extends javax.swing.JFrame
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbuser;
     private javax.swing.JTable tbAdmin;

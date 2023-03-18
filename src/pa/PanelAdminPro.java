@@ -6,6 +6,9 @@
 package pa;
 
 import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import lo.*;
@@ -14,10 +17,11 @@ import lo.*;
  *
  * @author chenc
  */
-public class PanelAdminPro extends javax.swing.JFrame
+public class PanelAdminPro extends javax.swing.JFrame implements WindowListener
 {
     
     Tools to = new Tools();
+    public static String tfclave="";
     /**
      * Creates new form PanelAdminAd
      */
@@ -37,6 +41,9 @@ public class PanelAdminPro extends javax.swing.JFrame
     private void initComponents()
     {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -58,6 +65,26 @@ public class PanelAdminPro extends javax.swing.JFrame
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+
+        jMenuItem1.setText("Modificar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Eliminar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Panel de administrador");
@@ -87,6 +114,13 @@ public class PanelAdminPro extends javax.swing.JFrame
         jLabel2.setText("Buscar");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.setOpaque(true);
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                jLabel2MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 7, 120, 36));
 
         jLabel3.setBackground(new java.awt.Color(84, 194, 66));
@@ -96,6 +130,13 @@ public class PanelAdminPro extends javax.swing.JFrame
         jLabel3.setText("Todos");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.setOpaque(true);
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                jLabel3MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 7, 120, 36));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 50));
@@ -200,7 +241,7 @@ public class PanelAdminPro extends javax.swing.JFrame
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        tbAdmin.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
+        tbAdmin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         tbAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
@@ -214,6 +255,7 @@ public class PanelAdminPro extends javax.swing.JFrame
 
             }
         ));
+        tbAdmin.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(tbAdmin);
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 20, 1030, 440));
@@ -256,6 +298,13 @@ public class PanelAdminPro extends javax.swing.JFrame
         jLabel12.setText("Añadir más productos");
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel12.setOpaque(true);
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                jLabel12MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 480, 230, 40));
 
         jLabel13.setBackground(new java.awt.Color(84, 194, 66));
@@ -339,6 +388,76 @@ public class PanelAdminPro extends javax.swing.JFrame
         new NewProdu().setVisible(true);
     }//GEN-LAST:event_jLabel10MouseClicked
 
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel12MouseClicked
+    {//GEN-HEADEREND:event_jLabel12MouseClicked
+        new AddProd().setVisible(true);
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel2MouseClicked
+    {//GEN-HEADEREND:event_jLabel2MouseClicked
+        if (txtBuscar.getText().isEmpty())
+        {
+            to.error("no deje campos vacíos", "Error de campos");
+        }else
+        {
+            mosDa(txtBuscar.getText(),"");
+        }
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel3MouseClicked
+    {//GEN-HEADEREND:event_jLabel3MouseClicked
+       mosDa("","");
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMenuItem2ActionPerformed
+    {//GEN-HEADEREND:event_jMenuItem2ActionPerformed
+        if (tbAdmin.getSelectedRowCount()==0)
+        {
+            to.error("Selecciona una opción", "Error de selección");
+        } else
+        {
+            if (to.pregunta("¿Quieres eliminar este producto?", "Mensaje de confirmación")==0)
+            {
+                int fil = tbAdmin.getSelectedRow();
+                
+                Eliminar el= new Eliminar();
+                String clave =tbAdmin.getValueAt(fil, 0).toString();
+                if (el.eliminaProducto(clave))
+                {
+                    to.aviso("Se eliminó con exíto", "Mensaje de exíto");
+                    mosDa("","");
+                } else
+                {
+                }
+            }
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMenuItem1ActionPerformed
+    {//GEN-HEADEREND:event_jMenuItem1ActionPerformed
+        if (tbAdmin.getSelectedRowCount()==0)
+        {
+            to.error("Selecciona una opción", "Error de selección");
+        } else
+        {
+            if (to.pregunta("¿Quieres modificar este producto?", "Mensaje de confirmación")==0)
+            {
+                int fil = tbAdmin.getSelectedRow();
+                tfclave =tbAdmin.getValueAt(fil, 0).toString();
+                ModifProdu nmd = new ModifProdu();
+                nmd.setVisible(true);
+                nmd.addWindowListener(new WindowAdapter()
+                {
+                    public void windowClosing(WindowEvent e)
+                    {
+                        notificarVentana1();
+
+                    }
+                });
+            }
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public void inicia()
     {
         to.txtFondo("Buscar producto", txtBuscar);
@@ -362,6 +481,12 @@ public class PanelAdminPro extends javax.swing.JFrame
         {
             txtBuscar.setText("");
         }
+    }
+    
+    private void notificarVentana1()
+    {
+        // aquí puedes agregar el código que notifica a la primera ventana
+        mosDa("","");
     }
     
     /**
@@ -424,13 +549,58 @@ public class PanelAdminPro extends javax.swing.JFrame
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbuser;
     private javax.swing.JTable tbAdmin;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void windowOpened(WindowEvent e)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -140,7 +140,7 @@ public class PanelEmplDat extends javax.swing.JFrame
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        tbAdmin.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
+        tbAdmin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         tbAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
@@ -165,6 +165,13 @@ public class PanelEmplDat extends javax.swing.JFrame
         jLabel10.setText("Cambiar contraseña");
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel10.setOpaque(true);
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                jLabel10MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 480, 230, 40));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 1120, 640));
@@ -205,20 +212,28 @@ public class PanelEmplDat extends javax.swing.JFrame
         this.dispose();
     }//GEN-LAST:event_jLabel5MouseClicked
 
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel10MouseClicked
+    {//GEN-HEADEREND:event_jLabel10MouseClicked
+        new ModifPass().setVisible(true);
+    }//GEN-LAST:event_jLabel10MouseClicked
+
     public void inicia()
     {
         setIconImage(to.icono());
+        lbuser.setText(LogEmple.getUsuario().toUpperCase());
         mosDa();
     }
     public void mosDa()
     {
         DefaultTableModel mode = new DefaultTableModel();
         mode.addColumn("Rfc");
-        mode.addColumn("Nombre");
         mode.addColumn("Usuario");
+        mode.addColumn("Nombre");
         mode.addColumn("Teléfono");
         tbAdmin.setModel(mode);
         to.colorTable(tbAdmin, 4);
+        Consultas cl = new Consultas();
+        cl.consuDatosEmpleado(mode, LogEmple.getUsuario());
     }
     /**
      * @param args the command line arguments

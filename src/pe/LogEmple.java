@@ -9,6 +9,7 @@ import pa.*;
 import in.Inicio;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import lo.Consultas;
 import lo.Tools;
 
 /**
@@ -18,6 +19,7 @@ import lo.Tools;
 public class LogEmple extends javax.swing.JFrame
 {
     Tools to = new Tools();
+    private static String usuario;
 
     /**
      * Creates new form LogAdmin
@@ -43,9 +45,9 @@ public class LogEmple extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
         labead = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtuser = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtpass = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -72,22 +74,22 @@ public class LogEmple extends javax.swing.JFrame
         jLabel2.setText("Usuario");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 200, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener()
+        txtuser.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
+        txtuser.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jTextField1ActionPerformed(evt);
+                txtuserActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 350, 40));
+        jPanel2.add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 350, 40));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
         jLabel3.setText("Contraseña");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
 
-        jPasswordField1.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
-        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 350, 40));
+        txtpass.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
+        jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 350, 40));
 
         jLabel4.setBackground(new java.awt.Color(0, 118, 255));
         jLabel4.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
@@ -137,10 +139,10 @@ public class LogEmple extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextField1ActionPerformed
-    {//GEN-HEADEREND:event_jTextField1ActionPerformed
+    private void txtuserActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtuserActionPerformed
+    {//GEN-HEADEREND:event_txtuserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtuserActionPerformed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel5MouseClicked
     {//GEN-HEADEREND:event_jLabel5MouseClicked
@@ -150,8 +152,22 @@ public class LogEmple extends javax.swing.JFrame
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel4MouseClicked
     {//GEN-HEADEREND:event_jLabel4MouseClicked
-        new PanelEmplIni().setVisible(true);
-        this.dispose();
+        Consultas cl = new Consultas();
+        String u, p;
+        u = txtuser.getText();
+        p = txtpass.getText();
+        if (u.isEmpty() || p.isEmpty())
+        {
+            to.aviso("No deje campos vacíos", "Campos vacíos");
+        } else
+        {
+            if (cl.logEmpl(u, p))
+            {
+                usuario=u;
+                new PanelEmplIni().setVisible(true);
+                this.dispose();
+            }
+        }
     }//GEN-LAST:event_jLabel4MouseClicked
 
     public void inicia()
@@ -160,6 +176,18 @@ public class LogEmple extends javax.swing.JFrame
         Image icon = new ImageIcon(getClass().getResource("/img/logoTienda.jpg")).getImage();
         setIconImage(icon);
     }
+
+    public static String getUsuario()
+    {
+        return usuario;
+    }
+
+    public static void setUsuario(String usuario)
+    {
+        LogEmple.usuario = usuario;
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -214,8 +242,8 @@ public class LogEmple extends javax.swing.JFrame
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labead;
+    private javax.swing.JPasswordField txtpass;
+    private javax.swing.JTextField txtuser;
     // End of variables declaration//GEN-END:variables
 }
